@@ -17,13 +17,13 @@ import java.util.List;
  * Created by 申尚宇 on 2016/10/19.
  */
 
-public abstract class DataBindingBaseAdapter<T> extends RecyclerView.Adapter<BindingViewHolder> {
+public abstract class BaseDataBindingAdapter<T> extends RecyclerView.Adapter<BindingViewHolder> {
 
     protected List<T> mList;
     protected LayoutInflater inflater;
     protected Context mContext;
 
-    public DataBindingBaseAdapter(Context context) {
+    public BaseDataBindingAdapter(Context context) {
         mContext = context;
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mList = new ArrayList<>();

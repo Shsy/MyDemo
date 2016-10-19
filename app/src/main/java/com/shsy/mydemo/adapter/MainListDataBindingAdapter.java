@@ -3,7 +3,7 @@ package com.shsy.mydemo.adapter;
 import android.content.Context;
 
 import com.shsy.mydemo.R;
-import com.shsy.mydemo.base.DataBindingBaseAdapter;
+import com.shsy.mydemo.base.BaseDataBindingAdapter;
 import com.shsy.mydemo.bean.MainListBean;
 
 
@@ -11,9 +11,9 @@ import com.shsy.mydemo.bean.MainListBean;
  * Created by 申尚宇 on 2016/10/19.
  */
 
-public class MainListAdapter extends DataBindingBaseAdapter<MainListBean> {
+public class MainListDataBindingAdapter extends BaseDataBindingAdapter<MainListBean> {
 
-    public MainListAdapter(Context context) {
+    public MainListDataBindingAdapter(Context context) {
         super(context);
     }
 

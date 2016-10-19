@@ -3,7 +3,7 @@ package com.shsy.mydemo.activity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.shsy.mydemo.R;
-import com.shsy.mydemo.adapter.MainListAdapter;
+import com.shsy.mydemo.adapter.MainListDataBindingAdapter;
 import com.shsy.mydemo.base.BaseActivity;
 import com.shsy.mydemo.bean.MainListBean;
 import com.shsy.mydemo.databinding.ActivityMainBinding;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
-    private MainListAdapter adapter;
+    private MainListDataBindingAdapter adapter;
 
     @Override
     protected int bindLayoutId() {
@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void initData() {
-        adapter = new MainListAdapter(getApplicationContext());
+        adapter = new MainListDataBindingAdapter(getApplicationContext());
         List<MainListBean> beanList = new ArrayList<>();
         beanList.add(new MainListBean("a!!你好 a"));
         beanList.add(new MainListBean("a a"));
