@@ -22,9 +22,4 @@ public class MainListAdapter extends DataBindingBaseAdapter<MainListBean> {
     protected int bindLayoutId() {
         return R.layout.item_main_list;
     }
-
-    @Override
-    public void onBindViewHolder(BindingViewHolder holder, int position) {
-        super.onBindViewHolder(holder, position);
-    }
 }
