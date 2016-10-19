@@ -56,4 +56,18 @@ public abstract class BaseDataBindingAdapter<T> extends RecyclerView.Adapter<Bin
         notifyDataSetChanged();
     }
 
+    public void addList(List<T> list) {
+        mList.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void addItem(T item) {
+        mList.add(item);
+        notifyDataSetChanged();
+    }
+
+    public void removeItem(T item) {
+        mList.remove(item);
+        notifyDataSetChanged();
+    }
 }
