@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.shsy.mydemo.BindingViewHolder;
-import com.shsy.mydemo.bean.MainListBean;
+import com.shsy.mydemo.listener.onItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ public abstract class BaseDataBindingAdapter<T> extends RecyclerView.Adapter<Bin
     protected List<T> mList;
     protected LayoutInflater inflater;
     protected Context mContext;
+    private onItemClickListener onItemClickListener;
 
     public BaseDataBindingAdapter(Context context) {
         mContext = context;
@@ -34,16 +35,13 @@ public abstract class BaseDataBindingAdapter<T> extends RecyclerView.Adapter<Bin
         int layoutId = bindLayoutId();
         if (layoutId == 0) throw new RuntimeException("LayoutId is 0");
         ViewDataBinding binding = DataBindingUtil.inflate(inflater, bindLayoutId(), parent, false);
-        return new BindingViewHolder<>(binding);
+        return new BindingViewHolder<>(binding, onItemClickListener);
     }
 
     protected abstract int bindLayoutId();
 
     @Override
-    public void onBindViewHolder(BindingViewHolder holder, int position) {
-        holder.getmBinding().setVariable(com.shsy.mydemo.BR.item, mList.get(position));
-        holder.getmBinding().executePendingBindings();
-    }
+    public abstract void onBindViewHolder(BindingViewHolder holder, int position);
 
     @Override
     public int getItemCount() {
@@ -72,5 +70,9 @@ public abstract class BaseDataBindingAdapter<T> extends RecyclerView.Adapter<Bin
 
     public void removeItem(int index) {
         mList.remove(index);
+    }
+
+    public void setOnItemClickListener(onItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

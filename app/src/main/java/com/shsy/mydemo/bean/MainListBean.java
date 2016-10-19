@@ -10,9 +10,25 @@ import android.databinding.Bindable;
 public class MainListBean extends BaseObservable {
 
     private String name;
+    private Class nextAct;
 
     public MainListBean(String name) {
         this.name = name;
+    }
+
+    public MainListBean(String name, Class nextAct) {
+        this.name = name;
+        this.nextAct = nextAct;
+    }
+
+    @Bindable
+    public Class getNextAct() {
+        return nextAct;
+    }
+
+    public void setNextAct(Class nextAct) {
+        this.nextAct = nextAct;
+        notifyPropertyChanged(com.shsy.mydemo.BR.nextAct);
     }
 
     @Bindable

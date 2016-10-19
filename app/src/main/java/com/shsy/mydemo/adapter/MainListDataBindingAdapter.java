@@ -2,6 +2,7 @@ package com.shsy.mydemo.adapter;
 
 import android.content.Context;
 
+import com.shsy.mydemo.BindingViewHolder;
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.base.BaseDataBindingAdapter;
 import com.shsy.mydemo.bean.MainListBean;
@@ -20,5 +21,11 @@ public class MainListDataBindingAdapter extends BaseDataBindingAdapter<MainListB
     @Override
     protected int bindLayoutId() {
         return R.layout.item_main_list;
+    }
+
+    @Override
+    public void onBindViewHolder(BindingViewHolder holder, int position) {
+        holder.getmBinding().setVariable(com.shsy.mydemo.BR.item, mList.get(position));
+        holder.getmBinding().executePendingBindings();
     }
 }
