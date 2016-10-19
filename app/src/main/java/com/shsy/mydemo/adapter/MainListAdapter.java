@@ -2,7 +2,6 @@ package com.shsy.mydemo.adapter;
 
 import android.content.Context;
 
-import com.shsy.mydemo.BindingViewHolder;
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.base.DataBindingBaseAdapter;
 import com.shsy.mydemo.bean.MainListBean;
