@@ -15,6 +15,11 @@ public class QRCodeActivity extends BaseActivity<ActivityQrCodeBinding> {
     }
 
     @Override
+    protected void initToolBar() {
+
+    }
+
+    @Override
     protected void initData() {
 
     }

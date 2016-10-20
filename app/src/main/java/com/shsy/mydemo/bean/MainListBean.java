@@ -1,13 +1,14 @@
 package com.shsy.mydemo.bean;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+
+import com.shsy.mydemo.base.BaseBean;
 
 /**
  * Created by 申尚宇 on 2016/10/19.
  */
 
-public class MainListBean extends BaseObservable {
+public class MainListBean extends BaseBean {
 
     private String name;
     private Class nextAct;

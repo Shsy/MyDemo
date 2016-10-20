@@ -18,6 +18,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
+        initToolBar();
         initData();
         doBusiness();
     }
@@ -37,6 +38,11 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      * @return 布局Layout
      */
     protected abstract int bindLayoutId();
+
+    /**
+     * 初始化ToolBar
+     */
+    protected abstract void initToolBar();
 
     /**
      * 初始化数据

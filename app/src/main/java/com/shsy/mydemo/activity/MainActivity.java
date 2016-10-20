@@ -20,6 +20,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     @Override
+    protected void initToolBar() {
+        mBinding.toolbar.setTitle(R.string.app_name);
+    }
+
+    @Override
     protected void initData() {
         adapter = new MainListDataBindingAdapter(this);
         List<MainListBean> beanList = new ArrayList<>();
@@ -30,7 +35,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void doBusiness() {
-        mBinding.toolbar.setTitle(R.string.app_name);
         mBinding.mainRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mBinding.mainRv.setAdapter(adapter);
     }

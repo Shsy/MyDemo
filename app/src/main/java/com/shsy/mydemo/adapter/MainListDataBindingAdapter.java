@@ -1,9 +1,7 @@
 package com.shsy.mydemo.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.shsy.mydemo.BindingViewHolder;
 import com.shsy.mydemo.R;
