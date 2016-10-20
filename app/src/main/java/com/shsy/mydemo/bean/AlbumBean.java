@@ -1,6 +1,7 @@
 package com.shsy.mydemo.bean;
 
 import android.databinding.Bindable;
+import android.databinding.ObservableBoolean;
 
 import com.shsy.mydemo.base.BaseBean;
 
@@ -11,6 +12,15 @@ import com.shsy.mydemo.base.BaseBean;
 public class AlbumBean extends BaseBean {
 
     private String path;
+    private ObservableBoolean isChecked = new ObservableBoolean();
+
+    public ObservableBoolean getIsChecked() {
+        return isChecked;
+    }
+
+    public void setIsChecked(ObservableBoolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
     @Bindable
     public String getPath() {

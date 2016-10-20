@@ -9,7 +9,7 @@
             type="com.shsy.mydemo.bean.MainListBean" />
 
         <variable
-            name="Presenter"
+            name="presenter"
             type="com.shsy.mydemo.adapter.MainListDataBindingAdapter.Presenter" />
     </data>
 
@@ -21,7 +21,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{()->Presenter.startNextAct(item.nextAct)}"
+            android:onClick="@{()->presenter.startNextAct(item.nextAct)}"
             android:text="@{item.name}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

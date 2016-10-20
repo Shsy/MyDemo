@@ -147,7 +147,7 @@ public class ImageLoader {
         imageView.setTag(path);
 
         if (mUIHandler == null) {
-            mUIHandler = new Handler() {
+            mUIHandler = new Handler(Looper.getMainLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
                     // 获取得到的图片设置到Imageview中

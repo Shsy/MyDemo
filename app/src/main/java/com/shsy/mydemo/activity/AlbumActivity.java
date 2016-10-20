@@ -7,15 +7,18 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.shsy.mydemo.R;
+import com.shsy.mydemo.adapter.AlbumListAdapter;
 import com.shsy.mydemo.base.BaseActivity;
 import com.shsy.mydemo.bean.AlbumBean;
 import com.shsy.mydemo.databinding.ActivityAlbumBinding;
@@ -31,6 +34,13 @@ import java.util.List;
 public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
     private ProgressDialog mProgressDialog;
     private List<AlbumBean> mAlbumBeanList;
+    private AlbumListAdapter adapter;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            adapter.addList(mAlbumBeanList);
+        }
+    };
 
     @Override
     protected int bindLayoutId() {
@@ -44,19 +54,23 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
 
     @Override
     protected void initData() {
-        // TODO: 2016/10/20  have Bug (permission)
         mAlbumBeanList = new ArrayList<>();
-        if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-        } else {
-            Snackbar.make(mBinding.getRoot(), "asdf", Snackbar.LENGTH_SHORT).show();
-
-            scanImages();
-        }
+        adapter = new AlbumListAdapter(getApplicationContext());
     }
 
     @Override
     protected void doBusiness() {
+        mBinding.albumRv.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+        mBinding.albumRv.setAdapter(adapter);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            //申请WRITE_EXTERNAL_STORAGE权限
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    0);
+        } else {
+            scanImages();
+        }
     }
 
     /**
@@ -73,9 +87,11 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
             public void run() {
                 Uri mImgUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 ContentResolver cr = AlbumActivity.this.getContentResolver();
-                Cursor cursor = cr.query(mImgUri, null,
-                        MediaStore.Images.Media.MIME_TYPE + "?or" + MediaStore.Images.Media.MIME_TYPE + "?",
-                        new String[]{"image/jpeg", "image/png"}, MediaStore.Images.Media.DATE_MODIFIED);
+                // TODO: 2016/10/20 获取图片不完整
+//                Cursor cursor = cr.query(mImgUri, null,
+//                        MediaStore.Images.Media.MIME_TYPE + "=?or" + MediaStore.Images.Media.MIME_TYPE + "=?",
+//                        new String[]{"image/jpeg", "image/png"}, MediaStore.Images.Media.DATE_MODIFIED);
+                Cursor cursor = cr.query(mImgUri, null, null, null, null);
 
                 while (cursor.moveToNext()) {
                     String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
@@ -86,37 +102,11 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
                     bean.setPath(path);
                     mAlbumBeanList.add(bean);
                 }
+
+                cursor.close();
+
+                mHandler.sendEmptyMessage(0x520);
             }
         }.start();
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 0:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    scanImages();
-                } else {
-                    //用户拒绝授权
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-                break;
-        }
-    }
-
-    //    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        switch (requestCode){
-//            case REQUEST_CODE:
-//                if(grantResults.length >0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-//                    //用户同意授权
-//                    callPhone();
-//                }else{
-//                    //用户拒绝授权
-//                }
-//                break;
-//        }
-//    }
 }
