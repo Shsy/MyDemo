@@ -10,7 +10,7 @@ import com.shsy.mydemo.utils.ImageLoader;
  */
 
 public class DataBindingAdapter {
-    @BindingAdapter({"app:url"})
+    @BindingAdapter({"url"})
     public static void showImg(ImageView imageView, String url) {
         ImageLoader.getInstence().loadImage(url, imageView);
     }

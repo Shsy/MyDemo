@@ -12,14 +12,16 @@ import com.shsy.mydemo.base.BaseBean;
 public class AlbumBean extends BaseBean {
 
     private String path;
-    private ObservableBoolean isChecked = new ObservableBoolean();
+    private boolean isChecked;
 
-    public ObservableBoolean getIsChecked() {
+    @Bindable
+    public boolean getIsChecked() {
         return isChecked;
     }
 
-    public void setIsChecked(ObservableBoolean isChecked) {
+    public void setIsChecked(boolean isChecked) {
         this.isChecked = isChecked;
+        notifyPropertyChanged(com.shsy.mydemo.BR.isChecked);
     }
 
     @Bindable

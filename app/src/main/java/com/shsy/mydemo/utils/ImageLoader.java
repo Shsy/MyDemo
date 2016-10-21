@@ -12,6 +12,8 @@ import android.util.LruCache;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.shsy.mydemo.R;
+
 import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -31,7 +33,7 @@ public class ImageLoader {
      * 线程池
      */
     private ExecutorService mThreadPool;
-    private static final int DEFAULT_THREAD_COUNT = 1;
+    private static final int DEFAULT_THREAD_COUNT = 4;
 
     /**
      * 队列调度方式
@@ -144,6 +146,8 @@ public class ImageLoader {
      * @param imageView
      */
     public void loadImage(final String path, final ImageView imageView) {
+        // 设置默认显示图片
+        imageView.setImageBitmap(BitmapFactory.decodeResource(imageView.getContext().getResources(), R.mipmap.ic_launcher));
         imageView.setTag(path);
 
         if (mUIHandler == null) {

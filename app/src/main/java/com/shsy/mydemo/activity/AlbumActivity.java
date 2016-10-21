@@ -91,7 +91,7 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
 //                Cursor cursor = cr.query(mImgUri, null,
 //                        MediaStore.Images.Media.MIME_TYPE + "=?or" + MediaStore.Images.Media.MIME_TYPE + "=?",
 //                        new String[]{"image/jpeg", "image/png"}, MediaStore.Images.Media.DATE_MODIFIED);
-                Cursor cursor = cr.query(mImgUri, null, null, null, null);
+                Cursor cursor = cr.query(mImgUri, null, null, null, MediaStore.Images.Media.DATE_MODIFIED);
 
                 while (cursor.moveToNext()) {
                     String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
@@ -100,8 +100,9 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
 
                     AlbumBean bean = new AlbumBean();
                     bean.setPath(path);
-                    mAlbumBeanList.add(bean);
+                    mAlbumBeanList.add(0, bean);
                 }
+
 
                 cursor.close();
 
