@@ -10,12 +10,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.adapter.AlbumListAdapter;
@@ -50,6 +50,13 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
     @Override
     protected void initToolBar() {
         mBinding.toolbar.setTitle("相册");
+        mBinding.toolbar.setNavigationIcon(R.mipmap.icon_back);
+        mBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

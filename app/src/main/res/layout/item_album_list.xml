@@ -23,23 +23,24 @@
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()->presenter.onImageViewClick(item.path)}"
+            android:layout_marginEnd="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:onClick="@{()->presenter.onImageViewClick(item)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:url="@{item.path}"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp" />
+            app:url="@{item.path}" />
 
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="@={item.isChecked}"
-            android:onCheckedChanged="@{(v, isChecked)->presenter.onCheckedChanged(checkBox,isChecked)}"
+            android:clickable="false"
+            android:onCheckedChanged="@{(v, isChecked)->presenter.onCheckedChanged(imageView,isChecked,item.path)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
     </android.support.constraint.ConstraintLayout>
