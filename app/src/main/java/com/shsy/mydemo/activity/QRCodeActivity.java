@@ -1,5 +1,7 @@
 package com.shsy.mydemo.activity;
 
+import android.view.View;
+
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.base.BaseActivity;
 import com.shsy.mydemo.databinding.ActivityQrCodeBinding;
@@ -16,7 +18,14 @@ public class QRCodeActivity extends BaseActivity<ActivityQrCodeBinding> {
 
     @Override
     protected void initToolBar() {
-
+        mBinding.toolbar.setTitle("二维码");
+        mBinding.toolbar.setNavigationIcon(R.mipmap.icon_back);
+        mBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -26,6 +35,6 @@ public class QRCodeActivity extends BaseActivity<ActivityQrCodeBinding> {
 
     @Override
     protected void doBusiness() {
-        mBinding.toolbar.setTitle("二维码");
+
     }
 }
