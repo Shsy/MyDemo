@@ -3,6 +3,7 @@ package com.shsy.mydemo.adapter;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -32,12 +33,15 @@ public class AlbumListAdapter extends BaseDataBindingAdapter<AlbumBean> {
         final ItemAlbumListBinding dataBinding = (ItemAlbumListBinding) holder.getmBinding();
         dataBinding.setItem(mList.get(position));
         dataBinding.setPresenter(new Presenter());
+        ViewGroup.LayoutParams layoutParams = dataBinding.imageView.getLayoutParams();
+        layoutParams.height = mContext.getResources().getDisplayMetrics().widthPixels / 3;
+        dataBinding.imageView.setLayoutParams(layoutParams);
         dataBinding.executePendingBindings();
     }
 
     public class Presenter {
         public void onImageViewClick(String str) {
-            Toast.makeText(mContext, Runtime.getRuntime().availableProcessors()+str, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, Runtime.getRuntime().availableProcessors() + str, Toast.LENGTH_SHORT).show();
 
         }
 
