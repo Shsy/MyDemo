@@ -33,7 +33,7 @@ public class ImageLoader {
      * 线程池
      */
     private ExecutorService mThreadPool;
-    private static final int DEFAULT_THREAD_COUNT = 4;
+    private static final int DEFAULT_THREAD_COUNT = 1;
 
     /**
      * 队列调度方式

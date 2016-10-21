@@ -3,6 +3,7 @@ package com.shsy.mydemo.adapter;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.shsy.mydemo.utils.ImageLoader;
 
 /**
@@ -12,6 +13,9 @@ import com.shsy.mydemo.utils.ImageLoader;
 public class DataBindingAdapter {
     @BindingAdapter({"url"})
     public static void showImg(ImageView imageView, String url) {
-        ImageLoader.getInstence().loadImage(url, imageView);
+//        ImageLoader.getInstence().loadImage(url, imageView);
+        Glide.with(imageView.getContext())
+                .load(url)
+                .into(imageView);
     }
 }
