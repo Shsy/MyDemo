@@ -8,6 +8,7 @@ import com.shsy.mydemo.databinding.ActivityQrCodeBinding;
 
 /**
  * Created by 申尚宇 on 2016/10/20.
+ * 二维码页面
  */
 
 public class QRCodeActivity extends BaseActivity<ActivityQrCodeBinding> {

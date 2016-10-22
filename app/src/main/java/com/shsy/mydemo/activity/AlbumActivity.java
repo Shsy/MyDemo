@@ -29,6 +29,7 @@ import java.util.List;
 
 /**
  * Created by 申尚宇 on 2016/10/20.
+ * 相册页面
  */
 
 public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {

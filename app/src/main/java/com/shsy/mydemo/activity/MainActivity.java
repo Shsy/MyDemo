@@ -11,6 +11,10 @@ import com.shsy.mydemo.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by 申尚宇 on 2016/10/20.
+ * 主页面
+ */
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private MainListDataBindingAdapter adapter;
 
