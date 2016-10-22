@@ -38,9 +38,9 @@ public class AlbumListAdapter extends BaseDataBindingAdapter<AlbumBean> {
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
         final ItemAlbumListBinding dataBinding = (ItemAlbumListBinding) holder.getmBinding();
+        setImageViewSize(dataBinding.imageView);
         dataBinding.setItem(mList.get(position));
         dataBinding.setPresenter(new Presenter());
-        setImageViewSize(dataBinding.imageView);
         dataBinding.executePendingBindings();
     }
 
