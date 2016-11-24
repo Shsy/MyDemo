@@ -1,6 +1,7 @@
 package com.shsy.mydemo.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.widget.Toast;
 
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.adapter.MainListDataBindingAdapter;
@@ -41,5 +42,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void doBusiness() {
         mBinding.mainRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mBinding.mainRv.setAdapter(adapter);
+    }
+
+    public class Presenter {
+        public void asdf() {
+            Toast.makeText(MainActivity.this, "aaaa", Toast.LENGTH_SHORT).show();
+        }
     }
 }
