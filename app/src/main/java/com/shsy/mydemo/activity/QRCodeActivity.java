@@ -36,6 +36,7 @@ public class QRCodeActivity extends BaseActivity<ActivityQrCodeBinding> {
                 finish();
             }
         });
+        setSupportActionBar(mBinding.toolbar);
     }
 
     @Override

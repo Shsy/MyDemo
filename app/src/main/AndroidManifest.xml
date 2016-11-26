@@ -38,6 +38,8 @@
         </activity>
         <activity android:name=".activity.AlbumActivity" />
         <activity android:name=".activity.QRCodeActivity" />
+        <activity android:name=".activity.CountDownDayActivity" />
+        <!--zxing-->
         <activity android:name=".utils.zxing.CaptureActivity" />
         <activity android:name=".utils.zxing.PreferencesActivity" />
     </application>

@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     protected void initToolBar() {
         mBinding.toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(mBinding.toolbar);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         List<MainListBean> beanList = new ArrayList<>();
         beanList.add(new MainListBean("相册", AlbumActivity.class));
         beanList.add(new MainListBean("二维码", QRCodeActivity.class));
-        beanList.add(new MainListBean("日子倒计时", null));
+        beanList.add(new MainListBean("CountDownDay", null));
         beanList.add(new MainListBean("语音备忘录", null));
         beanList.add(new MainListBean("记账本", null));
         adapter.setList(beanList);

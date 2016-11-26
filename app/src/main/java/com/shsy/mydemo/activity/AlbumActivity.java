@@ -58,6 +58,7 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
                 finish();
             }
         });
+        setSupportActionBar(mBinding.toolbar);
     }
 
     @Override
