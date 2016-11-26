@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by 申尚宇 on 2016/10/19.
+ * activity的基类
  */
 
 public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {

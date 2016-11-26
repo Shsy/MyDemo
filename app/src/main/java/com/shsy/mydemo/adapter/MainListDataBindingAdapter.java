@@ -18,10 +18,6 @@ import com.shsy.mydemo.databinding.ItemMainListBinding;
  */
 
 public class MainListDataBindingAdapter extends BaseDataBindingAdapter<MainListBean> {
-    /**
-     * SnackBar用
-     */
-    private View v;
 
     public MainListDataBindingAdapter(Context context) {
         super(context);
@@ -34,7 +30,6 @@ public class MainListDataBindingAdapter extends BaseDataBindingAdapter<MainListB
 
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
-        v = holder.itemView;
         final ItemMainListBinding dataBinding = (ItemMainListBinding) holder.getmBinding();
         dataBinding.setItem(mList.get(position));
         dataBinding.setPresenter(new Presenter());
@@ -42,7 +37,7 @@ public class MainListDataBindingAdapter extends BaseDataBindingAdapter<MainListB
     }
 
     public class Presenter {
-        public void startNextAct(Class cls) {
+        public void startNextAct(View v,Class cls) {
             if (cls != null)
                 mContext.startActivity(new Intent(mContext, cls));
             else

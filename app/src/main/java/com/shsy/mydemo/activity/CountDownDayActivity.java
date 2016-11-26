@@ -1,10 +1,17 @@
 package com.shsy.mydemo.activity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.base.BaseActivity;
 import com.shsy.mydemo.databinding.ActivityCountDownDayBinding;
+import com.shsy.mydemo.fragment.AddDayDialogFragment;
+import com.shsy.mydemo.utils.zxing.CaptureActivity;
 
 /**
  * Created by Shsy on 2016/11/26.
@@ -32,11 +39,20 @@ public class CountDownDayActivity extends BaseActivity<ActivityCountDownDayBindi
 
     @Override
     protected void initData() {
-
+        mBinding.setPresenter(new Presenter());
     }
 
     @Override
     protected void doBusiness() {
 
+    }
+
+    public class Presenter {
+        /**
+         * 添加一个倒计时的条目
+         */
+        public void addDay(){
+            new AddDayDialogFragment().show(getSupportFragmentManager(),"0");
+        }
     }
 }
