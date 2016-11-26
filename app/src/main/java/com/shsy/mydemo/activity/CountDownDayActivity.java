@@ -8,6 +8,7 @@ import com.shsy.mydemo.databinding.ActivityCountDownDayBinding;
 
 /**
  * Created by Shsy on 2016/11/26.
+ * 倒计时
  */
 
 public class CountDownDayActivity extends BaseActivity<ActivityCountDownDayBinding> {
@@ -20,13 +21,13 @@ public class CountDownDayActivity extends BaseActivity<ActivityCountDownDayBindi
     protected void initToolBar() {
         mBinding.toolbar.setTitle("CountDownDay");
         mBinding.toolbar.setNavigationIcon(R.mipmap.icon_back);
+        setSupportActionBar(mBinding.toolbar);
         mBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                CountDownDayActivity.this.finish();
             }
         });
-        setSupportActionBar(mBinding.toolbar);
     }
 
     @Override

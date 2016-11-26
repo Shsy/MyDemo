@@ -52,13 +52,13 @@ public class AlbumActivity extends BaseActivity<ActivityAlbumBinding> {
     protected void initToolBar() {
         mBinding.toolbar.setTitle("相册");
         mBinding.toolbar.setNavigationIcon(R.mipmap.icon_back);
+        setSupportActionBar(mBinding.toolbar);
         mBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        setSupportActionBar(mBinding.toolbar);
     }
 
     @Override
