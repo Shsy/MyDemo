@@ -1,5 +1,6 @@
 package com.shsy.mydemo.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.databinding.DataBindingUtil;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.bean.CountDownDayBean;
+import com.shsy.mydemo.bean.CountDownDayItemBean;
 import com.shsy.mydemo.databinding.FragmentDialogAddDayBinding;
 
 import java.text.ParseException;
@@ -96,11 +98,12 @@ public class AddDayDialogFragment extends DialogFragment {
                 return;
             }
             String date = mBinding.getBean().getDay() + " " + mBinding.getBean().getTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
             try {
                 // TODO: 2016/11/27 把时间和事件保存进入数据库
                 Toast.makeText(getActivity().getApplicationContext(), sdf.format(new Date(sdf.parse(date).getTime())) + "", Toast.LENGTH_SHORT).show();
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
