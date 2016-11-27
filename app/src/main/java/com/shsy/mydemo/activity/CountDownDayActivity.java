@@ -44,15 +44,21 @@ public class CountDownDayActivity extends BaseActivity<ActivityCountDownDayBindi
 
     @Override
     protected void doBusiness() {
-
     }
 
     public class Presenter {
         /**
          * 添加一个倒计时的条目
          */
-        public void addDay(){
-            new AddDayDialogFragment().show(getSupportFragmentManager(),"0");
+        public void addDay() {
+            AddDayDialogFragment addDayDialogFragment = new AddDayDialogFragment();
+            addDayDialogFragment.setOnDissmissListener(new AddDayDialogFragment.OnDismissListener() {
+                @Override
+                public void onDissmiss() {
+                    Snackbar.make(mBinding.getRoot(), "添加成功啦", Snackbar.LENGTH_SHORT).show();
+                }
+            });
+            addDayDialogFragment.show(getSupportFragmentManager(), "0");
         }
     }
 }

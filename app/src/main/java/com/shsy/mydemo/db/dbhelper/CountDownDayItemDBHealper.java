@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CountDownDayItemDBHealper extends SQLiteOpenHelper {
 
     private static final String NAME = "MyDemoDB";
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
 
     public CountDownDayItemDBHealper(Context context) {
         super(context, NAME, null, VERSION);
@@ -24,11 +24,12 @@ public class CountDownDayItemDBHealper extends SQLiteOpenHelper {
                 "(id integer primary key autoincrement, " +
                 "itemId varchar(20), " +
                 "name varchar(20), " +
-                "time varchar(20))");
+                "time varchar(20), " +
+                "isShow isShow(20))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("alter table count_down_day add isShow varchar(20)");
     }
 }

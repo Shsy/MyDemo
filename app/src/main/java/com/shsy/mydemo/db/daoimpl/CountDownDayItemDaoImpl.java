@@ -41,8 +41,8 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
     public void add(CountDownDayItemBean itemBean) {
         SQLiteDatabase db = dbHealper.getWritableDatabase();
 
-        db.execSQL("insert into count_down_day(itemId, name, time) values(?,?,?)",
-                new String[]{itemBean.getItemId(), itemBean.getName(), itemBean.getTime()});
+        db.execSQL("insert into count_down_day(itemId, name, time, isShow) values(?,?,?,?)",
+                new String[]{itemBean.getItemId(), itemBean.getName(), itemBean.getTime(), itemBean.getIsShow()});
 
         db.close();
     }
@@ -51,7 +51,7 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
     public void remove(String itemId) {
         SQLiteDatabase db = dbHealper.getWritableDatabase();
 
-        db.execSQL("delete from count_down_day where id = ?",
+        db.execSQL("delete from count_down_day where itemId = ?",
                 new String[]{itemId});
 
         db.close();
@@ -61,8 +61,8 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
     public void update(String itemId, CountDownDayItemBean itemBean) {
         SQLiteDatabase db = dbHealper.getWritableDatabase();
 
-        db.execSQL("update count_down_day set itemId = ?, name = ?, time = ?",
-                new String[]{itemId, itemBean.getName(), itemBean.getTime()});
+        db.execSQL("update count_down_day set itemId = ?, name = ?, time = ?, isShow = ?",
+                new String[]{itemId, itemBean.getName(), itemBean.getTime(),itemBean.getIsShow()});
 
         db.close();
     }
@@ -79,7 +79,8 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
             itemBean = new CountDownDayItemBean(
                     c.getString(c.getColumnIndex("itemId")),
                     c.getString(c.getColumnIndex("name")),
-                    c.getString(c.getColumnIndex("time"))
+                    c.getString(c.getColumnIndex("time")),
+                    c.getString(c.getColumnIndex("isShow"))
             );
         }
 
@@ -99,7 +100,8 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
             itemBean = new CountDownDayItemBean(
                     c.getString(c.getColumnIndex("itemId")),
                     c.getString(c.getColumnIndex("name")),
-                    c.getString(c.getColumnIndex("time"))
+                    c.getString(c.getColumnIndex("time")),
+                    c.getString(c.getColumnIndex("isShow"))
             );
             itemBeanList.add(itemBean);
             itemBean = null;
