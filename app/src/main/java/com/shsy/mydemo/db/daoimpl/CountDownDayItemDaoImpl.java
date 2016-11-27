@@ -92,7 +92,7 @@ public class CountDownDayItemDaoImpl implements CountDownDayItemDao {
     @Override
     public List<CountDownDayItemBean> selectAll() {
         SQLiteDatabase db = dbHealper.getWritableDatabase();
-        Cursor c = db.rawQuery("select * from count_down_day", null);
+        Cursor c = db.rawQuery("select * from count_down_day order by itemId desc", null);
         List<CountDownDayItemBean> itemBeanList = new ArrayList<>();
         CountDownDayItemBean itemBean = null;
 

@@ -18,11 +18,8 @@ import java.util.Date;
 
 public class CountDownDayAdapter extends BaseDataBindingAdapter<CountDownDayItemBean> {
 
-    private SimpleDateFormat sdf;
-
     public CountDownDayAdapter(Context context) {
         super(context);
-        sdf = new SimpleDateFormat("dd天HH小时mm分钟ss秒");
     }
 
     @Override
@@ -41,7 +38,14 @@ public class CountDownDayAdapter extends BaseDataBindingAdapter<CountDownDayItem
 
     public class Presenter {
         public String getItemStr(String name, String time) {
-            return "距离 " + name + " 还剩 " + sdf.format(new Date(Long.parseLong(time) - System.currentTimeMillis()));
+
+            long diff = Long.parseLong(time) - System.currentTimeMillis();
+            long days = diff / (1000 * 60 * 60 * 24);
+            long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+            long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
+            long second = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60) - minutes * (1000 * 60)) / 1000;
+
+            return "距离 " + name + " 还剩 " + days + "天" + hours + "小时" + minutes + "分" + second + "秒";
         }
 
         public void onClick(String itemId) {

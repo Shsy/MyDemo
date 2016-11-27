@@ -1,11 +1,10 @@
 package com.shsy.mydemo.activity;
 
 import android.os.SystemClock;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.shsy.mydemo.R;
 import com.shsy.mydemo.adapter.CountDownDayAdapter;
@@ -70,6 +69,22 @@ public class CountDownDayActivity extends BaseActivity<ActivityCountDownDayBindi
     protected void doBusiness() {
         mBinding.rvCountDown.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mBinding.rvCountDown.setAdapter(adapter);
+        mBinding.rvCountDown.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            int newY;
+            int oldY;
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                oldY = newY;
+                newY += dy;
+
+                if (oldY < newY) {// 上拉
+                    mBinding.floatingActionButton.setVisibility(View.GONE);
+                } else {// 下拉
+                    mBinding.floatingActionButton.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         refreshData();
     }
 

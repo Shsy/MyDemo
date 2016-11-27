@@ -62,7 +62,7 @@ public class AddDayDialogFragment extends DialogFragment {
                     new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                            mBinding.getBean().setDay(i + "-" + i1 + "-" + i2);
+                            mBinding.getBean().setDay(i + "-" + (i1 + 1) + "-" + i2);
                         }
                     },
                     Calendar.getInstance().get(Calendar.YEAR),
